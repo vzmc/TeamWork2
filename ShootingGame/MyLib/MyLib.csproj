@@ -1,23 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{7E56899E-0FB1-4715-908B-01437503B438}</ProjectGuid>
+    <ProjectGuid>{F5A59F8D-15F0-49BB-8142-2EA6FF45A79C}</ProjectGuid>
     <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ShootingGame</RootNamespace>
-    <AssemblyName>ShootingGame</AssemblyName>
+    <RootNamespace>MyLib</RootNamespace>
+    <AssemblyName>MyLib</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
     <XnaProfile>Reach</XnaProfile>
-    <XnaCrossPlatformGroupID>13f6a332-7538-4cc2-a38b-d828b10df8a8</XnaCrossPlatformGroupID>
-    <XnaOutputType>Game</XnaOutputType>
-    <ApplicationIcon>Game.ico</ApplicationIcon>
-    <Thumbnail>GameThumbnail.png</Thumbnail>
+    <XnaCrossPlatformGroupID>746abc98-ae0d-439d-a0dd-6f79e198c555</XnaCrossPlatformGroupID>
+    <XnaOutputType>Library</XnaOutputType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,30 +50,26 @@
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Device\BGMLoader.cs" />
+    <Compile Include="Device\CSVReader.cs" />
+    <Compile Include="Device\GameDevice.cs" />
+    <Compile Include="Device\InputState.cs" />
+    <Compile Include="Device\Loader.cs" />
+    <Compile Include="Device\Renderer.cs" />
+    <Compile Include="Device\SELoader.cs" />
+    <Compile Include="Device\Sound.cs" />
+    <Compile Include="Device\TextureLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Game1.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Game.ico" />
-    <Content Include="GameThumbnail.png">
-      <XnaPlatformSpecific>true</XnaPlatformSpecific>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\MyLib\MyLib.csproj">
-      <Project>{f5a59f8d-15f0-49bb-8142-2ea6ff45a79c}</Project>
-      <Name>MyLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ShootingGameContent\ShootingGameContent.contentproj">
-      <Name>ShootingGameContent</Name>
-      <XnaReferenceType>Content</XnaReferenceType>
-    </ProjectReference>
+    <Compile Include="Utility\Timer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

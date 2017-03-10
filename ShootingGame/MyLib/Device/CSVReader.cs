@@ -1,7 +1,11 @@
-﻿using System;
+﻿//===============================================================
+// CSVファイルを読み込む用クラス
+// 作成者：張ユービン
+//===============================================================
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.IO;
 
 namespace MyLib.Device
@@ -9,12 +13,7 @@ namespace MyLib.Device
     public static class CSVReader
     {
         private static List<string[]> stringData = new List<string[]>();  //CSVファイルから読み込んだデータの保存ところ
-
-        //public CSVReader()
-        //{
-        //    stringData = new List<string[]>();
-        //}
-
+        
         /// <summary>
         /// CSVファイルからデータを読み込む
         /// </summary>

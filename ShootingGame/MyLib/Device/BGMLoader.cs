@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿//================================================================================
+// BGMをロードするクラス
+// 作成者：張ユービン
+//================================================================================
 
 namespace MyLib.Device
 {
@@ -12,6 +12,11 @@ namespace MyLib.Device
     {
         private Sound sound;
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="sound">Soundデバイス</param>
+        /// <param name="resources">ロードするパス配列</param>
         public BGMLoader(Sound sound, string[,] resources) :
             base(resources)
         {

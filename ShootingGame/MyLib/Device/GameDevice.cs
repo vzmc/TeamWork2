@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -13,13 +9,11 @@ namespace MyLib.Device
     /// </summary>
     public class GameDevice
     {
-        public static Random Rand = new Random();
+        public static readonly Random Rand = new Random();  //ランダム生成オブジェクト
+        private Renderer renderer;           //描画オブジェクト
+        private InputState input;            //入力オブジェクト
+        private Sound sound;                 //音声オブジェクト
 
-        private Renderer renderer;  //描画オブジェクト
-        private InputState input;   //入力オブジェクト
-        private Sound sound;
-        private Vector2 displayModify;
-        
         /// <summary>
         /// コンストラクタ
         /// </summary>
@@ -30,17 +24,6 @@ namespace MyLib.Device
             renderer = new Renderer(content, graphics);
             input = new InputState();
             sound = new Sound(content);
-            displayModify = Vector2.Zero;
-        }
-
-        public void SetDisplayModify(Vector2 position)
-        {
-            displayModify = position;
-        }
-
-        public Vector2 GetDisplayModify()
-        {
-            return displayModify;
         }
 
         /// <summary>
@@ -51,6 +34,7 @@ namespace MyLib.Device
             //ゲーム開始時に必要な最小限のリソースを読み込む
             renderer.LoadTexture("number", "./Texture/");
             renderer.LoadTexture("load", "./Texture/");
+            renderer.LoadTexture("LodingGround", "./Texture/");
         }
 
         /// <summary>
@@ -62,22 +46,37 @@ namespace MyLib.Device
             sound.Update();
         }
 
+        /// <summary>
+        /// 資源を外す
+        /// </summary>
         public void UnloadContent()
         {
             renderer.Unload();
             sound.Unload();
         }
 
+        /// <summary>
+        /// Soundインスタンスを取得
+        /// </summary>
+        /// <returns>Soundインスタンス</returns>
         public Sound GetSound()
         {
             return sound;
         }
 
+        /// <summary>
+        /// Rendererインスタンスを取得
+        /// </summary>
+        /// <returns>Rendererインスタンス</returns>
         public Renderer GetRenderer()
         {
             return renderer;
         }
 
+        /// <summary>
+        /// InputStateインスタンスを取得
+        /// </summary>
+        /// <returns>InputStateインスタンス</returns>
         public InputState GetInputState()
         {
             return input;

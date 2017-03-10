@@ -1,8 +1,9 @@
-﻿using System;
+﻿//===========================================================
+// 音声処理用のクラス
+// 作成者：張ユービン
+//==========================================================
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;  //コンテンツ利用
 using Microsoft.Xna.Framework.Audio;    //WAVデータ
 using Microsoft.Xna.Framework.Media;    //MP3データ
@@ -301,7 +302,7 @@ namespace MyLib.Device
         #endregion
 
         /// <summary>
-        /// 解放
+        /// リソース解放
         /// </summary>
         public void Unload()
         {
@@ -313,20 +314,6 @@ namespace MyLib.Device
         public void Update()
         {
             RemoveSE();
-            //if (currentSE != null)
-            //{
-            //    if (seInstances[currentSE].State == SoundState.Stopped)
-            //    {
-            //        currentSE = null;
-            //    }
-            //}
-            //if (currentBGM != null)
-            //{
-            //    if (MediaPlayer.State == MediaState.Stopped)
-            //    {
-            //        currentBGM = null;
-            //    }
-            //}
         }
     }
 }

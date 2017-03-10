@@ -10,7 +10,7 @@ namespace ShootingGame
         /// </summary>
         static void Main(string[] args)
         {
-            using (Game1 game = new Game1())
+            using (ShootingGame game = new ShootingGame())
             {
                 game.Run();
             }

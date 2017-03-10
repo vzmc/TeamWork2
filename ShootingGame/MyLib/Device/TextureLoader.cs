@@ -1,14 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿//==========================================================
+// 画像を読み込み用のクラス
+// 作成者：張ユービン
+//==========================================================
 
 namespace MyLib.Device
 {
     public class TextureLoader : Loader
     {
-        private Renderer renderer;
+        private Renderer renderer;  //Rendererデバイス
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="renderer">Renderer</param>
+        /// <param name="resources">リソースパス群</param>
         public TextureLoader(Renderer renderer, string[,] resources) :
             base(resources)
         {
@@ -16,6 +21,9 @@ namespace MyLib.Device
             Initialize();
         }
 
+        /// <summary>
+        /// 更新
+        /// </summary>
         public override void Update()
         {
             endFlag = true;

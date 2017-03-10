@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿//=====================================================
+// 入力処理を行うクラス
+// 作成者：張ユービン
+//====================================================
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-
 
 namespace MyLib.Device
 {
@@ -16,11 +16,11 @@ namespace MyLib.Device
         //フィールド
         private Vector2 velocity = Vector2.Zero;   // 移動量の宣言
 
-        //キー
+        //Key
         private KeyboardState currentKey;   //現在のキー
-        private KeyboardState previousKey;  //１フレーム前のキー
-        private GamePadState currentPad;
-        private GamePadState previousPad;
+        private KeyboardState previousKey;  //前フレームのKey
+        private GamePadState currentPad;    //現在のButton
+        private GamePadState previousPad;   //前フレームのButton
 
         /// <summary>
         /// コンストラクタ
@@ -74,7 +74,7 @@ namespace MyLib.Device
         /// <summary>
         /// キー情報の更新
         /// </summary>
-        /// <param name="keyState"></param>
+        /// <param name="keyState">KeyboardState</param>
         private void UpdateKey(KeyboardState keyState)
         {
             //現在登録されているキーを１フレーム前のキーに
@@ -83,6 +83,10 @@ namespace MyLib.Device
             currentKey = keyState;
         }
 
+        /// <summary>
+        /// button情報更新
+        /// </summary>
+        /// <param name="buttonState">GamePadState</param>
         private void UpdatePad(GamePadState buttonState)
         {
             //現在登録されているキーを１フレーム前のキーに
@@ -91,6 +95,12 @@ namespace MyLib.Device
             currentPad = buttonState;
         }
 
+        /// <summary>
+        /// KeyとButtonが押されているかを両方チェック
+        /// </summary>
+        /// <param name="key">Keys</param>
+        /// <param name="button">Buttons</param>
+        /// <returns>どちらが押されていたらTrue</returns>
         public bool CheckDownKey(Keys key, Buttons button)
         {
             //キーボードでチェックしたいキーが押されているか？
@@ -115,7 +125,7 @@ namespace MyLib.Device
         }
 
         /// <summary>
-        /// キーが押されているか？
+        /// Keyが押されているか？
         /// </summary>
         /// <param name="key">調べたいキー</param>
         /// <returns>現在押されていて、１フレーム前に押されていなければ true</returns>
@@ -130,6 +140,11 @@ namespace MyLib.Device
             return current && !previous;
         }
 
+        /// <summary>
+        /// Buttonが押されているか？
+        /// </summary>
+        /// <param name="button">Buttons</param>
+        /// <returns></returns>
         public bool IsKeyDown(Buttons button)
         {
             //現在チェックしたいキーが押されたか
@@ -144,13 +159,18 @@ namespace MyLib.Device
         /// <summary>
         /// キー入力のトリガー判定
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="key">Keys</param>
         /// <returns>１フレーム前に押されていたらfalse</returns>
         public bool GetKeyTrigger(Keys key)
         {
             return IsKeyDown(key);
         }
 
+        /// <summary>
+        /// Buttonのトリガー判定
+        /// </summary>
+        /// <param name="button">Buttons</param>
+        /// <returns>１フレーム前に押されていたらfalse</returns>
         public bool GetKeyTrigger(Buttons button)
         {
             return IsKeyDown(button);
@@ -166,6 +186,11 @@ namespace MyLib.Device
             return currentKey.IsKeyDown(key);
         }
 
+        /// <summary>
+        /// Button入力状態判定
+        /// </summary>
+        /// <param name="button">Buttons</param>
+        /// <returns>押されていたらtrue</returns>
         public bool GetKeyState(Buttons button)
         {
             return currentPad.IsButtonDown(button);
